@@ -1,65 +1,31 @@
-# AI Experts Assignment (Python)
+# ai-code-review-assignment-3-answer
 
-This assignment evaluates your ability to:
+## Python version
 
-- set up a small Python project to run reliably (locally + in Docker),
-- pin dependencies for reproducible installs,
-- write focused tests to reproduce a bug,
-- implement a minimal, reviewable fix.
+Tested with Python 3.13.2.
 
-## What you will do
+## Install dependencies
 
-### 1) Dockerfile (required)
+```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
 
-Create a `Dockerfile` so the project can run the test suite in a non-interactive, CI-style environment.
+## Run tests locally
 
-Requirements:
+```bash
+pytest -v
+```
 
-- requirements.txt exists and is used during build (pip install -r requirements.txt)
-- pytest must be included/pinned in requirements.txt
-- The image must run tests by default (use: `CMD ["python", "-m", "pytest", "-v"]`).
-- The build must install dependencies from `requirements.txt`.
+## Build Docker image
 
-### 2) requirements.txt (required)
+```bash
+docker build -t ai-code-review-assignment-3-answer .
+```
 
-Create a `requirements.txt` with pinned versions, using this format:
+## Run tests in Docker
 
-- `package==x.y.z`
-
-### 3) README updates (required)
-
-Update this README to include:
-
-- how to run the tests locally,
-- how to build and run tests with Docker.
-
-### 4) Find + fix a bug (required)
-
-There is a bug somewhere in this repository.
-
-Your tasks:
-
-- Identify the bug through reading code and/or running tests.
-- Write tests that reproduce the bug (tests should fail on the current code).
-- Apply the smallest possible fix to make the tests pass.
-- Keep the change minimal and reviewable (no refactors).
-
-## Constraints
-
-- Keep changes minimal and reviewable.
-- Do not refactor unrelated code.
-- Do not introduce extra tooling unless required.
-- You may add tests and the smallest code change needed to fix the bug.
-
-### 5) EXPLANATION.md (required)
-
-Create `EXPLANATION.md` (max 250 words) containing:
-
-- **What was the bug?**
-- **Why did it happen?**
-- **Why does your fix solve it?**
-- **One realistic case / edge case your tests still don’t cover**
-
-## Submission
-
-- Submit a public GitHub repository URL containing your solution to the Google form link provided.
+```bash
+docker run --rm ai-code-review-assignment-3-answer
+```
